@@ -3,6 +3,15 @@
 # This script uses rclone as backup tool
 # makes backup of ACL, dpkg package list, mysql and files, keeping reverse differential
 
+# Roadmap:
+# - Finish postgresql method
+# - Include and exclude files/directories
+# - Databases lists
+# - Method to get databases from SGBDs
+# - Unify connection and direct DB dump methods
+# - Mongo backup (simple mongodump)
+# - Separate config file
+
 FAIL=0
 HOSTNAME=`hostname -s`
 TODAY=`/bin/date +%Y-%m-%d`
