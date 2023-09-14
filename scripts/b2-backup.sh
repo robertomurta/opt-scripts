@@ -20,18 +20,18 @@ LOGFILE=/var/log/rclone/rclone-$TODAY.log
 # Multiple e-mails can be set with comma, without spaces.
 EMAIL="robertomurta@yandex.com"
 SUCCESS_WEBHOOK="https://push.statuscake.com/?PK=SOME-VALID-KEY&TestID=NUMERIC-TEST-ID&time=0"
-
-/usr/bin/mkdir -p `dirname $LOGFILE`
-touch $LOGFILE
-chmod 640 $LOGFILE
-
+# Rclone endpoint
 STORAGE="brnewsmt-bkp:brnewsmt"
 
 # to get separate parameters use as: "${FILES_FROM[@]}"
 FILES_FROM=( "/etc" \
             "/var/www" \
             "/home/tag3" \
-            )
+           )
+
+/usr/bin/mkdir -p `dirname $LOGFILE`
+touch $LOGFILE
+chmod 640 $LOGFILE
 
 # backup postgres database. TODO: finish code
 # Get postgres credentials from env file, caution with permissions on this file (chmod root, chown 600).
@@ -49,6 +49,7 @@ backup_mysql() {
     FAIL=$(( FAIL + $? ))
 }
 
+# arguments: database
 backup_mysql_local_root() {
     echo ">>> Database Backup: " $1 >>$LOGFILE
     /usr/bin/mysqldump $1 | /bin/gzip - | /usr/bin/rclone -l -v --log-file=$LOGFILE rcat $STORAGE/var/backups/mysql/$1-$TODAY.sql.gz
