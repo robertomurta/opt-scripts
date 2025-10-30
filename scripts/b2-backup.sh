@@ -18,7 +18,7 @@ TODAY=`/bin/date +%Y-%m-%d`
 LOGFILE=/var/log/rclone/rclone-$TODAY.log
 
 # Multiple e-mails can be set with comma, without spaces.
-EMAIL="robertomurta@yandex.com"
+EMAIL="roberto@provider.com"
 SUCCESS_WEBHOOK="https://push.statuscake.com/?PK=SOME-VALID-KEY&TestID=NUMERIC-TEST-ID&time=0"
 # Rclone endpoint
 STORAGE="brnewsmt-bkp:brnewsmt"
