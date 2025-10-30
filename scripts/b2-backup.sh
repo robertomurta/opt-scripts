@@ -26,7 +26,7 @@ STORAGE="brnewsmt-bkp:brnewsmt"
 # to get separate parameters use as: "${FILES_FROM[@]}"
 FILES_FROM=( "/etc" \
             "/var/www" \
-            "/home/tag3" \
+            "/home/user" \
            )
 
 /usr/bin/mkdir -p `dirname $LOGFILE`
